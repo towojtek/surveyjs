@@ -14,3 +14,5 @@ export {defaultStandardCss} from "../defaultCss/cssstandard";
 export {defaultBootstrapCss} from "../defaultCss/cssbootstrap";
 
 export {NgSurveyModel as Model} from "../ng/surveyModel";
+
+import "../ng/survey";

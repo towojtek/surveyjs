@@ -1,6 +1,5 @@
 import {SurveyModel} from "../survey";
 import {surveyCss} from "../defaultCss/cssstandard"
-import ng from "@types/angular"
 
 export class NgSurveyModel extends SurveyModel {
     renderCallback: () => void;
