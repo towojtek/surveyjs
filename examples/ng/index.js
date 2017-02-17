@@ -1,5 +1,6 @@
 var json = { title: "Product Feedback Survey Example", showProgressBar: "top", pages: [
-    {questions: [
+    { title: "Page1",
+        questions: [
         { type: "matrix", name: "Quality", title: "Please indicate if you agree or disagree with the following statements",
             columns: [{ value: 1, text: "Strongly Disagree" },
                 { value: 2, text: "Disagree" },
@@ -43,6 +44,6 @@ var model = new Survey.Model(json);
 
 var ngApp = angular.module("app", ["ngSurvey"]);
 
-ngApp.controller('SurveyController', function ($scope) {
+ngApp.controller('AppController', function ($scope) {
     $scope.model = model;
 });

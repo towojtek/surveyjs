@@ -1,13 +1,12 @@
 import angular from 'angular';
-var template = require("html-loader?interpolate!val-loader!./survey.html");
-
-angular.module("ngSurvey", []);
+var template = require("html-loader?interpolate!val-loader!./page.html");
 
 angular.module("ngSurvey")
-    .component("survey",{
+    .component("surveyPage",{
         template: template,
         bindings: {
-            model: '<'
+            survey: '<',
+            page: '<'
         },
         controller: function($scope) {
         }
