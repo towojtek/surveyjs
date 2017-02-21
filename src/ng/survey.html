@@ -1,18 +1,18 @@
-<div :class="css.root">
-    <div v-if="hasTitle" :class="css.header"><h3>{{$ctrl.model.processedTitle}}</h3></div>
-    <div v-if="survey.state === 'running'">
-        <div :class="css.body">
-            <survey-progress v-if="survey.showProgressBar =='top'" :survey="survey" :css="css"></survey-progress>
-            <survey-page id="sq-page" survey="$ctrl.model" page="$ctrl.model.currentPage" :css="css"></survey-page>
-            <survey-progress style="margin-top:10px" v-if="survey.showProgressBar =='bottom'" :survey="survey" :css="css"></survey-progress>
+<div ng-class="css.root">
+    <div ng-if="!!$ctrl.model.title && $ctrl.model.showTitle" ng-class="css.header"><h3>{{$ctrl.model.processedTitle}}</h3></div>
+    <div ng-if="$ctrl.model.state === 'running'">
+        <div ng-class="css.body">
+            <survey-progress ng-if="$ctrl.model.showProgressBar =='top'" survey="survey" css="css"></survey-progress>
+            <survey-page id="sq-page" survey="$ctrl.model" page="$ctrl.model.currentPage" css="css"></survey-page>
+            <survey-progress style="margin-top:10px" ng-if="$ctrl.model.showProgressBar =='bottom'" survey="survey" css="css"></survey-progress>
         </div>
-        <div v-if="survey.isNavigationButtonsShowing" :class="css.footer">
-            <input type="button" :value="survey.pagePrevText" v-show="!survey.isFirstPage" :class="getNavBtnClasses('prev')" @click="prevPage"/>
-            <input type="button" :value="survey.pageNextText" v-show="!survey.isLastPage" :class="getNavBtnClasses('next')" @click="nextPage"/>
-            <input type="button" :value="survey.completeText" v-show="survey.isLastPage" :class="getNavBtnClasses('complete')" @click="completeLastPage"/>
+        <div ng-if="$ctrl.model.isNavigationButtonsShowing" ng-class="css.footer">
+            <input type="button" ng-value="$ctrl.model.pagePrevText" ng-if="!$ctrl.model.isFirstPage" ng-class="getNavBtnClasses('prev')" ng-click="prevPage()"/>
+            <input type="button" ng-value="$ctrl.model.pageNextText" ng-if="!$ctrl.model.isLastPage" ng-class="getNavBtnClasses('next')" ng-click="nextPage()"/>
+            <input type="button" ng-value="$ctrl.model.completeText" ng-if="$ctrl.model.isLastPage" ng-class="getNavBtnClasses('complete')" ng-click="completeLastPage()"/>
         </div>
     </div>
-    <div v-if="survey.state === 'completed'" v-html="survey.processedCompletedHtml"></div>
-    <div v-if="survey.state === 'loading'" v-html="survey.processedLoadingHtml"></div>
-    <div v-if="survey.state === 'empty'" :class="css.body">{{survey.emptySurveyText}}</div>
+    <div ng-if="$ctrl.model.state === 'completed'" ng-bind-html="$ctrl.model.processedCompletedHtml"></div>
+    <div ng-if="$ctrl.model.state === 'loading'" ng-bind-html="$ctrl.model.processedLoadingHtml"></div>
+    <div ng-if="$ctrl.model.state === 'empty'" ng-class="css.body">{{$ctrl.model.emptySurveyText}}</div>
 </div>
