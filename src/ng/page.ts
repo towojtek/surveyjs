@@ -9,6 +9,9 @@ angular.module("ngSurvey")
             page: '<'
         },
         controller: function($scope) {
+            this.$onInit = function() {
+                $scope.rows = this.page.rows;
+            };
         }
     });
 
