@@ -13,7 +13,7 @@ angular.module("ngSurvey")
             this.$onInit = function() {
                 var me = this;
 
-                $scope.css = me.survey.css;
+                $scope.css = me.model.css;
 
                 $scope.getNavBtnClasses = function(btnType) {
                     var btnClass = me.model.css.navigation[btnType];
