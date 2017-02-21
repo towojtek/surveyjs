@@ -10,7 +10,9 @@ angular.module("ngSurvey")
         },
         controller: function($scope) {
             this.$onInit = function() {
-                $scope.rows = this.page.rows;
+                $scope.$watch("$ctrl.page", function (newVal, oldVal) {
+                    $scope.rows = newVal && newVal.rows || [];
+                });
             };
         }
     });
