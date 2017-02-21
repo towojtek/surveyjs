@@ -42,7 +42,7 @@ angular.module("ngSurvey").
             var originalComponent = element;
             scope.$watch(attributes["type"], type => {
                 type = !!type ? type : "error"; // TODO: implement survey-error component
-                var component = $compile('<survey-' + type + ' question="question" isEditMode="$ctrl.survey.isEditMode"></survey-' + type + '>')(scope);
+                var component = $compile('<survey-' + type + ' question="question" isEditMode="$ctrl.survey.isEditMode" css="$ctrl.survey.css"></survey-' + type + '>')(scope);
                 originalComponent.replaceWith(component);
             });
         }

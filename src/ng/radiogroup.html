@@ -1,9 +1,9 @@
-<div :class="css.radiogroup.root">
-    <div ng-repeat="item in $ctrl.question.visibleChoices" :class="css.radiogroup.item" :style="{'width': colWidth, 'margin-right': question.colCount === 0 ? '5px': '0px'}">
-        <label :class="css.radiogroup.item">
-            <input type="radio" :name="question.name" :value="item.value" :id="question.inputId + '_' + item.value" v-model="question.value" :disabled="!isEditMode" />
+<div ng-class="$ctrl.css.radiogroup.root">
+    <div ng-repeat="item in $ctrl.question.visibleChoices" ng-class="$ctrl.css.radiogroup.item" ng-style="{'width': colWidth, 'margin-right': question.colCount === 0 ? '5px': '0px'}">
+        <label ng-class="$ctrl.css.radiogroup.item">
+            <input type="radio" name="$ctrl.question.name" ng-value="item.value" id="$ctrl.question.inputId + '_' + item.value" ng-model="$ctrl.question.value" disabled="!$ctrl.isEditMode" />
             <span>{{item.text}}</span>
         </label>
     </div>
-    <survey-other-choice v-show="question.hasOther && isOtherSelected" :class="css.radiogroup.other" :question="question" :isEditMode="isEditMode" :css="css"/>
+    <survey-other-choice ng-if="$ctrl.question.hasOther && $ctrl.question.isOtherSelected" ng-class="$ctrl.css.radiogroup.other" question="$ctrl.question" isEditMode="$ctrl.isEditMode" css="$ctrl.css"/>
 </div>
