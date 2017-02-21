@@ -18,3 +18,4 @@ export {NgSurveyModel as Model} from "../ng/surveyModel";
 import "../ng/survey";
 import "../ng/page";
 import "../ng/radiogroup";
+import "../ng/comment";

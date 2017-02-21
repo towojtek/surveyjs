@@ -1,14 +1,15 @@
 <h4 v-show="hasTitle" :class="css.pageTitle">{{num + $ctrl.page.processedTitle}}</h4>
 <div ng-repeat="row in rows" v-show="row.visible" :class="css.row">
     <div ng-repeat="question in row.questions" :class="css.question.root" style="vertical-align:top" :id="row.id" :style="{display: question.visible ? 'inline-block': 'none', marginLeft: getIndentSize(question, question.indent), paddingRight: getIndentSize(question, question.rightIndent), width: question.renderWidth }">
-        <h5 v-if="question.hasTitle" :class="css.question.title" v-show="survey.questionTitleLocation === 'top'">{{question.fullTitle}}</h5>
+        <h5 ng-if="question.hasTitle && $ctrl.survey.questionTitleLocation === 'top'" :class="css.question.title">{{question.fullTitle}}</h5>
         <survey-errors :question="question" :css="css"/>
         <!--<component :is="getWidgetComponentName(question)" :question="question" :isEditMode="survey.isEditMode" :css="css"/>-->
-        <survey-radiogroup question="question" isEditMode="$ctrl.survey.isEditMode"></survey-radiogroup>
-        <div v-show="question.hasComment">
+        <survey-radiogroup ng-if="question.getType() == 'radiogroup'" question="question" isEditMode="$ctrl.survey.isEditMode"></survey-radiogroup>
+        <survey-comment ng-if="question.getType() == 'comment'" question="question" isEditMode="$ctrl.survey.isEditMode"></survey-comment>
+        <div ng-if="question.hasComment">
             <div>{{question.commentText}}</div>
             <survey-comment :question="question" :isEditMode="survey.isEditMode" :css="css"/>
         </div>
-        <h5 v-if="question.hasTitle" v-show="survey.questionTitleLocation === 'bottom'" :class="css.question.title">{{question.fullTitle}}</h5>
+        <h5 ng-if="question.hasTitle && $ctrl.survey.questionTitleLocation === 'bottom'" :class="css.question.title">{{question.fullTitle}}</h5>
     </div>
 </div>

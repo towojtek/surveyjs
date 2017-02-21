@@ -1,0 +1,3 @@
+<textarea v-if="isEditMode" type="text" ng-model="$ctrl.question.value" id="$ctrl.question.inputId" :cols="question.cols"
+          :rows="question.rows" :placeholder="question.placeHolder" :class="css.comment.root"></textarea>
+<div v-else :class="css.comment.root">{{$ctrl.question.value}}</div>
