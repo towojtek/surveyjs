@@ -6,7 +6,7 @@ angular.module("ngSurvey")
         template: template,
         bindings: {
             question: '<',
-            isEditMode: '<',
+            iseditmode: '<',
             css: '<'
         },
         controller: function($scope) {
