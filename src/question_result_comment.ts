@@ -6,11 +6,11 @@ import {LocalizableString} from "./localizablestring";
 /**
  * A Model for a comment question
  */
-export class QuestionResultCommentModel extends Question {
+export class QuestionResultCommentModel extends Question{
     /**
      * The html rows attribute.
      */
-    public rows: number = 4;
+    public rows: number = 1;
     /**
      * The html cols attribute.
      */
@@ -31,6 +31,20 @@ export class QuestionResultCommentModel extends Question {
     }
     isEmpty(): boolean {
         return super.isEmpty() || this.value === "";
+    }
+
+    protected onItemValueChanged() {
+        this.rows = this.rows +5;
+    }
+
+    onSurveyValueChangeInterceptor(){
+        console.log('W OBIEKCIE PODRZEDNYM');
+    }
+
+
+    protected onValueChanged() {
+        super.onValueChanged();
+        this.onItemValueChanged();
     }
 }
 JsonObject.metaData.addClass("resultcomment", [{ name: "cols:number", default: 50 }, { name: "rows:number", default: 4 },

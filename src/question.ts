@@ -27,6 +27,7 @@ export class Question extends QuestionBase implements IValidatorOwner {
     errorsChangedCallback: () => void;
     titleChangedCallback: () => void;
     validateValueCallback: () => SurveyError;
+    onValueChangedCallback: (newValue: any)=>void;
 
     constructor(public name: string) {
         super(name);
@@ -85,6 +86,8 @@ export class Question extends QuestionBase implements IValidatorOwner {
         if (no) no += ". ";
         return no + requireText + this.processedTitle;
     }
+
+
     public focus(onError: boolean = false) {
         SurveyElement.ScrollElementToTop(this.id);
         var id = !onError ? this.getFirstInputElementId() : this.getFirstErrorInputElementId();
@@ -212,6 +215,9 @@ export class Question extends QuestionBase implements IValidatorOwner {
         this.setNewValue(newValue);
         if (this.isvalueChangedCallbackFiring) return;
         this.isvalueChangedCallbackFiring = true;
+
+        console.log('ELLO POSZLO');
+        this.onSurveyValueChangeInterceptor();
         this.fireCallback(this.valueChangedCallback);
         this.isvalueChangedCallbackFiring = false;
     }
@@ -321,11 +327,17 @@ export class Question extends QuestionBase implements IValidatorOwner {
             this.data.setComment(this.name, newValue);
         } else this.questionComment = newValue;
     }
+
+    onSurveyValueChangeInterceptor(){
+        return 1;
+    }
+
     //IQuestion
     onSurveyValueChanged(newValue: any) {
         this.isValueChangedInSurvey = true;
         this.value = this.valueFromData(newValue);
         this.fireCallback(this.commentChangedCallback);
+        // this.onSurveyValueChangeInterceptor();
         this.isValueChangedInSurvey = false;
     }
     //IValidatorOwner
