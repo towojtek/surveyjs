@@ -24,6 +24,7 @@ export {SurveyPage, SurveyRow} from "../react/reactpage";
 export {SurveyQuestion, SurveyQuestionErrors} from "../react/reactquestion";
 export {SurveyElementBase, SurveyQuestionElementBase} from "../react/reactquestionelement";
 export {SurveyQuestionCommentItem, SurveyQuestionComment} from "../react/reactquestioncomment";
+export {SurveyQuestionResultCommentItem, SurveyQuestionResultComment} from "../react/reactquestionresultcomment";
 export {SurveyQuestionCheckbox, SurveyQuestionCheckboxItem} from "../react/reactquestioncheckbox";
 export {SurveyQuestionDropdown} from "../react/reactquestiondropdown";
 export {SurveyQuestionMatrixDropdown, SurveyQuestionMatrixDropdownRow} from "../react/reactquestionmatrixdropdown";
